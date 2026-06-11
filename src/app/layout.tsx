@@ -1,0 +1,43 @@
+import type { Metadata, Viewport } from "next";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "Venture Voice — AI & Automation for Agencies and Ops Teams",
+  description:
+    "Venture Voice designs and builds AI-powered automations on n8n, Make, and Zapier, so your team stops losing hours to repetitive work. Book a free automation audit.",
+  openGraph: {
+    title: "Venture Voice — AI & Automation for Agencies and Ops Teams",
+    description:
+      "We design and build AI-powered automations on n8n, Make, and Zapier. Book a free automation audit.",
+    url: "https://venturevoice.ai",
+    siteName: "Venture Voice",
+    type: "website",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}

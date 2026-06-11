@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0b1220;
+  --color-ink-2: #111a2e;
+  --color-paper: #fafbfd;
+  --color-slate: #475467;
+  --color-slate-2: #98a2b3;
+  --color-line: #e4e9f2;
+  --color-line-dark: #1f2a44;
+  --color-cobalt: #2e5bff;
+  --color-cobalt-deep: #1e43cc;
+  --color-amber: #ffb224;
+  --color-mint: #2fd180;
+
+  --font-display: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+  --font-body: "Instrument Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* n8n-style workflow canvas: the signature surface */
+.canvas-grid {
+  background-color: var(--color-ink);
+  background-image: radial-gradient(circle, #243250 1.1px, transparent 1.1px);
+  background-size: 26px 26px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* pulse traveling along hero connectors */
+.wire {
+  stroke-dasharray: 6 8;
+  animation: wireflow 1.6s linear infinite;
+}
+@keyframes wireflow {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+.node-pop {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: nodepop 0.5s ease-out forwards;
+}
+@keyframes nodepop {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wire {
+    animation: none;
+  }
+  .node-pop {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.prose-vv h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 2rem 0 0.75rem;
+}
+.prose-vv h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 1.5rem 0 0.5rem;
+}
+.prose-vv p {
+  margin: 0.9rem 0;
+  line-height: 1.75;
+  color: var(--color-slate);
+}
+.prose-vv ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+  color: var(--color-slate);
+  line-height: 1.75;
+}
+.prose-vv a {
+  color: var(--color-cobalt);
+  text-decoration: underline;
+}
+.prose-vv blockquote {
+  border-left: 3px solid var(--color-cobalt);
+  padding-left: 1rem;
+  font-style: italic;
+}
