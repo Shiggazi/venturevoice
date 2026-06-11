@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import ContactSection from "@/components/ContactSection";
+import RoiCalculator from "@/components/RoiCalculator";
 import {
   VideoSection,
   ProblemSection,
@@ -53,6 +54,7 @@ export default async function HomePage() {
         <Hero settings={s} />
         <VideoSection settings={s} />
         <ProblemSection />
+        <RoiCalculator />
         <ServicesSection services={services} />
         <ProcessSection />
         <TestimonialsSection testimonials={testimonials} />

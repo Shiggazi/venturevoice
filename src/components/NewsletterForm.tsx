@@ -11,7 +11,7 @@ export default function NewsletterForm({ contactEmail }: { contactEmail: string 
       onSubmit={(e) => {
         e.preventDefault();
         // Works out of the box. Swap for your email provider's embed
-        // (ConvertKit, Mailchimp, Beehiiv) — see README.
+        // (ConvertKit, Mailchimp, Beehiiv). See README.
         window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
           "Newsletter signup"
         )}&body=${encodeURIComponent(`Please add me to the newsletter: ${email}`)}`;
@@ -31,7 +31,7 @@ export default function NewsletterForm({ contactEmail }: { contactEmail: string 
       />
       <button
         type="submit"
-        className="shrink-0 rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-ink-2"
+        className="btn shrink-0 rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-ink-2"
       >
         Subscribe
       </button>

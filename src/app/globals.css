@@ -3,19 +3,24 @@
 @theme {
   --color-ink: #0b1220;
   --color-ink-2: #111a2e;
-  --color-paper: #fafbfd;
+  --color-paper: #f7f9fc;
   --color-slate: #475467;
   --color-slate-2: #98a2b3;
   --color-line: #e4e9f2;
   --color-line-dark: #1f2a44;
   --color-cobalt: #2e5bff;
   --color-cobalt-deep: #1e43cc;
+  --color-cobalt-soft: #eef2ff;
   --color-amber: #ffb224;
   --color-mint: #2fd180;
 
   --font-display: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
   --font-body: "Instrument Sans", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --shadow-card: 0 1px 2px rgba(11, 18, 32, 0.05), 0 8px 24px rgba(11, 18, 32, 0.05);
+  --shadow-card-hover: 0 2px 4px rgba(11, 18, 32, 0.06), 0 20px 48px rgba(11, 18, 32, 0.12);
+  --shadow-cta: 0 8px 24px rgba(46, 91, 255, 0.35);
 }
 
 html {
@@ -27,13 +32,15 @@ body {
   color: var(--color-ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-.font-display {
-  font-family: var(--font-display);
-}
-.font-mono {
-  font-family: var(--font-mono);
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+::selection {
+  background: var(--color-cobalt);
+  color: #fff;
 }
 
 /* n8n-style workflow canvas: the signature surface */
@@ -50,42 +57,155 @@ body {
   text-transform: uppercase;
 }
 
-/* pulse traveling along hero connectors */
+/* ---------- motion system ---------- */
+
+/* scroll reveal: elements start hidden, .is-visible added by IntersectionObserver */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* energy pulse traveling along hero connectors */
 .wire {
   stroke-dasharray: 6 8;
   animation: wireflow 1.6s linear infinite;
 }
 @keyframes wireflow {
-  to {
-    stroke-dashoffset: -28;
-  }
+  to { stroke-dashoffset: -28; }
 }
+
+/* traveling dot on hero wires */
+.pulse-dot {
+  animation: pulsetravel 3s ease-in-out infinite;
+}
+@keyframes pulsetravel {
+  0%, 100% { opacity: 0; }
+  10%, 90% { opacity: 1; }
+}
+
 .node-pop {
   opacity: 0;
   transform: translateY(8px);
   animation: nodepop 0.5s ease-out forwards;
 }
 @keyframes nodepop {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: none; }
+}
+
+/* soft breathing glow on the live status dot */
+.live-dot {
+  animation: livepulse 2.2s ease-in-out infinite;
+}
+@keyframes livepulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* card hover lift */
+.lift {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s ease;
+  box-shadow: var(--shadow-card);
+}
+.lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: #cfd9ec;
+}
+
+/* buttons */
+.btn {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+/* link arrow nudge */
+.arrow-link svg, .arrow-link span.arr {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+}
+.arrow-link:hover svg, .arrow-link:hover span.arr {
+  transform: translateX(4px);
+}
+
+/* smooth accordion */
+.faq-item .faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-item.open .faq-answer {
+  grid-template-rows: 1fr;
+}
+.faq-answer > div { overflow: hidden; }
+.faq-icon {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+
+/* range slider styling for the calculator */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--color-cobalt) var(--fill, 50%), #243250 var(--fill, 50%));
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--color-cobalt);
+  box-shadow: 0 2px 8px rgba(46, 91, 255, 0.4);
+  transition: transform 0.15s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.12); }
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--color-cobalt);
+  box-shadow: 0 2px 8px rgba(46, 91, 255, 0.4);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wire {
+  .wire, .node-pop, .live-dot, .pulse-dot {
     animation: none;
   }
-  .node-pop {
-    animation: none;
+  .node-pop { opacity: 1; transform: none; }
+  .pulse-dot { opacity: 1; }
+  .reveal {
     opacity: 1;
     transform: none;
+    transition: none;
   }
-  html {
-    scroll-behavior: auto;
+  .lift, .btn, .arrow-link svg, .faq-answer, .faq-icon {
+    transition: none;
   }
+  html { scroll-behavior: auto; }
 }
 
+/* blog prose */
 .prose-vv h2 {
   font-family: var(--font-display);
   font-weight: 700;

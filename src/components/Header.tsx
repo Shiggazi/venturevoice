@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const links = [
@@ -13,12 +13,24 @@ const links = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line-dark bg-ink/90 backdrop-blur">
+    <header
+      className={`sticky top-0 z-50 border-b bg-ink/85 backdrop-blur-md transition-shadow duration-300 ${
+        scrolled ? "border-line-dark shadow-[0_8px_30px_rgba(0,0,0,0.35)]" : "border-transparent"
+      }`}
+    >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <Link href="/" className="flex items-center gap-2.5" aria-label="Venture Voice home">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-cobalt">
+        <Link href="/" className="group flex items-center gap-2.5" aria-label="Venture Voice home">
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-cobalt transition-transform duration-300 group-hover:rotate-[-6deg]">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
               <path d="M2 3l4.5 10h3L14 3h-2.8L8 11.2 4.8 3H2z" fill="#fff" />
             </svg>
@@ -33,14 +45,14 @@ export default function Header() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm text-slate-2 transition-colors hover:text-white"
+              className="relative text-sm text-slate-2 transition-colors hover:text-white after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-amber after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
             </Link>
           ))}
           <Link
             href="/#contact"
-            className="rounded-lg bg-cobalt px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-cobalt-deep"
+            className="btn rounded-lg bg-cobalt px-4 py-2 text-sm font-semibold text-white hover:bg-cobalt-deep"
           >
             Book a free audit
           </Link>
@@ -53,11 +65,7 @@ export default function Header() {
           aria-label="Toggle menu"
         >
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            {open ? (
-              <path d="M5 5l12 12M17 5L5 17" />
-            ) : (
-              <path d="M3 6h16M3 11h16M3 16h16" />
-            )}
+            {open ? <path d="M5 5l12 12M17 5L5 17" /> : <path d="M3 6h16M3 11h16M3 16h16" />}
           </svg>
         </button>
       </div>

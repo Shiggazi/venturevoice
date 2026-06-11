@@ -8,6 +8,8 @@ import type {
 } from "@/lib/content";
 import { processSteps, problemItems } from "@/lib/content";
 import NewsletterForm from "./NewsletterForm";
+import Reveal from "./Reveal";
+import FaqAccordion from "./FaqAccordion";
 
 /* ---------- shared bits ---------- */
 
@@ -23,7 +25,7 @@ function SectionHead({
   light?: boolean;
 }) {
   return (
-    <div className="max-w-2xl">
+    <Reveal className="max-w-2xl">
       <p className={`eyebrow ${light ? "text-amber" : "text-cobalt"}`}>{eyebrow}</p>
       <h2
         className={`font-display mt-3 text-3xl font-bold tracking-tight md:text-4xl ${
@@ -37,7 +39,7 @@ function SectionHead({
           {sub}
         </p>
       )}
-    </div>
+    </Reveal>
   );
 }
 
@@ -78,25 +80,29 @@ export function VideoSection({ settings }: { settings: SiteSettings }) {
               title={settings.videoTitle}
               sub={settings.videoCaption}
             />
-            <Link
-              href="/#contact"
-              className="mt-7 inline-block rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-ink-2"
-            >
-              Then book your audit
-            </Link>
+            <Reveal delay={120}>
+              <Link
+                href="/#contact"
+                className="btn mt-7 inline-block rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-ink-2"
+              >
+                Then book your audit
+              </Link>
+            </Reveal>
           </div>
-          <div className="overflow-hidden rounded-2xl border border-line bg-ink shadow-[0_24px_60px_rgba(11,18,32,0.18)]">
-            <div className="relative aspect-video">
-              <iframe
-                src={`https://player.vimeo.com/video/${settings.vimeoId}?dnt=1`}
-                className="absolute inset-0 h-full w-full"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-                title="Venture Voice — AI and automations, explained in three minutes"
-                loading="lazy"
-              />
+          <Reveal delay={100}>
+            <div className="overflow-hidden rounded-2xl border border-line bg-ink shadow-[0_24px_60px_rgba(11,18,32,0.18)]">
+              <div className="relative aspect-video">
+                <iframe
+                  src={`https://player.vimeo.com/video/${settings.vimeoId}?dnt=1`}
+                  className="absolute inset-0 h-full w-full"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  title="Venture Voice: AI and automations, explained in three minutes"
+                  loading="lazy"
+                />
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -110,17 +116,19 @@ export function ProblemSection() {
         <SectionHead
           eyebrow="The leak"
           title="Where your team's week actually goes"
-          sub="Most teams don't have a talent problem. They have a throughput problem — and it hides in the small, repetitive tasks nobody put on the org chart."
+          sub="Most teams don't have a talent problem. They have a throughput problem, and it hides in the small, repetitive tasks nobody put on the org chart."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {problemItems.map((p) => (
-            <div key={p.title} className="rounded-2xl border border-line bg-white p-7">
-              <p className="font-mono text-xs font-medium uppercase tracking-wider text-cobalt">
-                {p.stat}
-              </p>
-              <h3 className="font-display mt-3 text-xl font-semibold text-ink">{p.title}</h3>
-              <p className="mt-3 leading-relaxed text-slate">{p.body}</p>
-            </div>
+          {problemItems.map((p, i) => (
+            <Reveal key={p.title} delay={i * 110}>
+              <div className="lift h-full rounded-2xl border border-line bg-white p-7">
+                <p className="font-mono text-xs font-medium uppercase tracking-wider text-cobalt">
+                  {p.stat}
+                </p>
+                <h3 className="font-display mt-3 text-xl font-semibold text-ink">{p.title}</h3>
+                <p className="mt-3 leading-relaxed text-slate">{p.body}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -138,28 +146,27 @@ export function ServicesSection({ services }: { services: Service[] }) {
           sub="Every engagement starts with the same question: which hours can software give you back this quarter?"
         />
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {services.map((s) => (
-            <article
-              key={s._id}
-              className="flex flex-col rounded-2xl border border-line bg-paper p-8 transition-shadow hover:shadow-[0_16px_40px_rgba(11,18,32,0.08)]"
-            >
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-ink text-amber">
-                {icons[s.icon] ?? icons.workflow}
+          {services.map((s, i) => (
+            <Reveal key={s._id} delay={i * 110} as="article" className="h-full">
+              <div className="lift group flex h-full flex-col rounded-2xl border border-line bg-paper p-8">
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-ink text-amber transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-4deg]">
+                  {icons[s.icon] ?? icons.workflow}
+                </div>
+                <h3 className="font-display mt-5 text-[22px] font-bold text-ink">{s.title}</h3>
+                <p className="font-mono mt-1 text-[13px] text-cobalt">{s.tagline}</p>
+                <p className="mt-4 leading-relaxed text-slate">{s.description}</p>
+                <ul className="mt-5 space-y-2.5 border-t border-line pt-5">
+                  {s.bullets?.map((b) => (
+                    <li key={b} className="flex gap-2.5 text-[15px] text-slate">
+                      <svg className="mt-1 shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
+                        <path d="M2 7.5l3 3 7-7" stroke="#2fd180" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h3 className="font-display mt-5 text-[22px] font-bold text-ink">{s.title}</h3>
-              <p className="font-mono mt-1 text-[13px] text-cobalt">{s.tagline}</p>
-              <p className="mt-4 leading-relaxed text-slate">{s.description}</p>
-              <ul className="mt-5 space-y-2.5 border-t border-line pt-5">
-                {s.bullets?.map((b) => (
-                  <li key={b} className="flex gap-2.5 text-[15px] text-slate">
-                    <svg className="mt-1 shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-                      <path d="M2 7.5l3 3 7-7" stroke="#2fd180" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -169,21 +176,34 @@ export function ServicesSection({ services }: { services: Service[] }) {
 
 export function ProcessSection() {
   return (
-    <section id="process" className="canvas-grid">
+    <section id="process" className="border-b border-line bg-paper">
       <div className="mx-auto max-w-6xl px-5 py-20 md:py-24">
         <SectionHead
-          light
           eyebrow="How it works"
           title="From audit to handover in four steps"
           sub="No retainers required, no black boxes. You see the cost before any build starts, and you own everything when it ships."
         />
         <ol className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {processSteps.map((step) => (
-            <li key={step.n} className="rounded-2xl border border-line-dark bg-ink-2 p-7">
-              <p className="font-mono text-sm text-amber">{step.n}</p>
-              <h3 className="font-display mt-3 text-xl font-semibold text-white">{step.title}</h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-slate-2">{step.body}</p>
-            </li>
+          {processSteps.map((step, i) => (
+            <Reveal key={step.n} delay={i * 110} as="li" className="h-full">
+              <div className="lift relative h-full rounded-2xl border border-line bg-white p-7">
+                <p className="font-mono text-sm font-semibold text-cobalt">{step.n}</p>
+                <h3 className="font-display mt-3 text-xl font-semibold text-ink">{step.title}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-slate">{step.body}</p>
+                {i < processSteps.length - 1 && (
+                  <svg
+                    className="absolute -right-5 top-1/2 hidden -translate-y-1/2 text-slate-2 lg:block"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    aria-hidden
+                  >
+                    <path d="M4 10h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )}
+              </div>
+            </Reveal>
           ))}
         </ol>
       </div>
@@ -201,21 +221,24 @@ export function TestimonialsSection({ testimonials }: { testimonials: Testimonia
           sub="Real engagements, in the client's own words."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {testimonials.map((t) => (
-            <figure key={t._id} className="flex flex-col rounded-2xl border border-line bg-paper p-8">
-              {t.result && (
-                <p className="font-mono mb-4 inline-flex w-fit rounded-full bg-ink px-3.5 py-1.5 text-xs text-amber">
-                  {t.result}
-                </p>
-              )}
-              <blockquote className="text-[17px] leading-relaxed text-ink">
-                &ldquo;{t.quote}&rdquo;
-              </blockquote>
-              <figcaption className="mt-6 border-t border-line pt-4 text-sm">
-                <span className="font-semibold text-ink">{t.name}</span>
-                <span className="text-slate"> — {t.role}</span>
-              </figcaption>
-            </figure>
+          {testimonials.map((t, i) => (
+            <Reveal key={t._id} delay={i * 110} as="figure" className="h-full">
+              <div className="lift flex h-full flex-col rounded-2xl border border-line bg-paper p-8">
+                {t.result && (
+                  <p className="font-mono mb-4 inline-flex w-fit rounded-full bg-ink px-3.5 py-1.5 text-xs text-amber">
+                    {t.result}
+                  </p>
+                )}
+                <blockquote className="text-[17px] leading-relaxed text-ink">
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+                <figcaption className="mt-auto border-t border-line pt-4 text-sm">
+                  <span className="mt-6 block" />
+                  <span className="font-semibold text-ink">{t.name}</span>
+                  <span className="text-slate"> · {t.role}</span>
+                </figcaption>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -231,31 +254,34 @@ export function BlogTeaser({ posts }: { posts: PostPreview[] }) {
           <SectionHead
             eyebrow="From the blog"
             title="Automation, minus the hype"
-            sub="Practical breakdowns of real workflows — managed entirely from the CMS."
+            sub="Practical breakdowns of real workflows, managed entirely from the CMS."
           />
-          <Link href="/blog" className="text-sm font-semibold text-cobalt hover:text-cobalt-deep">
-            All posts →
-          </Link>
+          <Reveal delay={120}>
+            <Link href="/blog" className="arrow-link text-sm font-semibold text-cobalt hover:text-cobalt-deep">
+              All posts <span className="arr">→</span>
+            </Link>
+          </Reveal>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {posts.slice(0, 2).map((p) => (
-            <Link
-              key={p._id}
-              href={`/blog/${p.slug}`}
-              className="group rounded-2xl border border-line bg-white p-8 transition-shadow hover:shadow-[0_16px_40px_rgba(11,18,32,0.08)]"
-            >
-              <p className="font-mono text-xs text-slate-2">
-                {new Date(p.publishedAt).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </p>
-              <h3 className="font-display mt-3 text-xl font-bold text-ink group-hover:text-cobalt">
-                {p.title}
-              </h3>
-              <p className="mt-3 leading-relaxed text-slate">{p.excerpt}</p>
-            </Link>
+          {posts.slice(0, 2).map((p, i) => (
+            <Reveal key={p._id} delay={i * 110} className="h-full">
+              <Link
+                href={`/blog/${p.slug}`}
+                className="lift group block h-full rounded-2xl border border-line bg-white p-8"
+              >
+                <p className="font-mono text-xs text-slate-2">
+                  {new Date(p.publishedAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </p>
+                <h3 className="font-display mt-3 text-xl font-bold text-ink transition-colors group-hover:text-cobalt">
+                  {p.title}
+                </h3>
+                <p className="mt-3 leading-relaxed text-slate">{p.excerpt}</p>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -272,17 +298,9 @@ export function FaqSection({ faqs }: { faqs: Faq[] }) {
           title="The questions every ops lead asks"
           sub="If yours isn't here, the audit call is the fastest place to ask it."
         />
-        <div className="mt-10 md:mt-0">
-          {faqs.map((f) => (
-            <details key={f._id} className="group border-b border-line py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[17px] font-semibold text-ink">
-                {f.question}
-                <span className="font-mono text-cobalt transition-transform group-open:rotate-45">+</span>
-              </summary>
-              <p className="mt-3 max-w-xl leading-relaxed text-slate">{f.answer}</p>
-            </details>
-          ))}
-        </div>
+        <Reveal delay={120} className="mt-10 md:mt-0">
+          <FaqAccordion faqs={faqs} />
+        </Reveal>
       </div>
     </section>
   );
@@ -292,13 +310,15 @@ export function NewsletterSection({ settings }: { settings: SiteSettings }) {
   return (
     <section id="newsletter" className="border-b border-line bg-paper">
       <div className="mx-auto max-w-6xl px-5 py-16 md:py-20">
-        <div className="flex flex-col items-start justify-between gap-8 rounded-2xl border border-line bg-white p-8 md:flex-row md:items-center md:p-10">
-          <div className="max-w-md">
-            <h2 className="font-display text-2xl font-bold text-ink">{settings.newsletterHeadline}</h2>
-            <p className="mt-2 leading-relaxed text-slate">{settings.newsletterSub}</p>
+        <Reveal>
+          <div className="flex flex-col items-start justify-between gap-8 rounded-2xl border border-line bg-white p-8 shadow-[var(--shadow-card)] md:flex-row md:items-center md:p-10">
+            <div className="max-w-md">
+              <h2 className="font-display text-2xl font-bold text-ink">{settings.newsletterHeadline}</h2>
+              <p className="mt-2 leading-relaxed text-slate">{settings.newsletterSub}</p>
+            </div>
+            <NewsletterForm contactEmail={settings.contactEmail} />
           </div>
-          <NewsletterForm contactEmail={settings.contactEmail} />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

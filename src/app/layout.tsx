@@ -2,11 +2,11 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Venture Voice — AI & Automation for Agencies and Ops Teams",
+  title: "Venture Voice | AI & Automation for Agencies and Ops Teams",
   description:
     "Venture Voice designs and builds AI-powered automations on n8n, Make, and Zapier, so your team stops losing hours to repetitive work. Book a free automation audit.",
   openGraph: {
-    title: "Venture Voice — AI & Automation for Agencies and Ops Teams",
+    title: "Venture Voice | AI & Automation for Agencies and Ops Teams",
     description:
       "We design and build AI-powered automations on n8n, Make, and Zapier. Book a free automation audit.",
     url: "https://venturevoice.ai",

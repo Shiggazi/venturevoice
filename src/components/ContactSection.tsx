@@ -20,7 +20,7 @@ export default function ContactSection({ contactEmail }: { contactEmail: string 
           </h2>
           <p className="mt-4 max-w-md text-[17px] leading-relaxed text-slate-2">
             Tell us a little about your operations. We&apos;ll reply within one
-            business day with a time for your 30-minute audit — and you keep the
+            business day with a time for your 30-minute audit, and you keep the
             findings whether or not we ever build anything together.
           </p>
           <ul className="mt-8 space-y-3 text-[15px] text-slate-2">
@@ -44,10 +44,10 @@ export default function ContactSection({ contactEmail }: { contactEmail: string 
           onSubmit={(e) => {
             e.preventDefault();
             // Zero-backend default: opens the visitor's email client.
-            // Swap for Formspree/Resend in one line — see README.
+            // Swap for Formspree/Resend in one line. See README.
             const body = `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\n\n${form.message}`;
             window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
-              "Automation audit request — " + form.name
+              "Automation audit request from " + form.name
             )}&body=${encodeURIComponent(body)}`;
           }}
         >
@@ -71,7 +71,7 @@ export default function ContactSection({ contactEmail }: { contactEmail: string 
           </div>
           <button
             type="submit"
-            className="w-full rounded-lg bg-cobalt px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-cobalt-deep"
+            className="btn w-full rounded-lg bg-cobalt px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-cobalt-deep"
           >
             Request my free audit
           </button>

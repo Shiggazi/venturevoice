@@ -24,19 +24,19 @@ type FullPost = {
 const fallbackBodies: Record<string, string[]> = {
   "five-workflows-every-agency-should-automate": [
     "Hiring is the most expensive way to solve a throughput problem. Before you post the listing, check whether the role you're scoping is actually a stack of repetitive workflows that software could absorb. These five show up in almost every audit we run.",
-    "1. Lead intake and routing. A form submission should create the CRM record, enrich it, score it, and notify the right person — without anyone retyping a thing. This is usually the highest-ROI build on the list and rarely takes more than a week.",
+    "1. Lead intake and routing. A form submission should create the CRM record, enrich it, score it, and notify the right person, without anyone retyping a thing. This is usually the highest-ROI build on the list and rarely takes more than a week.",
     "2. Client reporting. If someone on your team copies numbers from dashboards into a slide deck every month, that's a workflow. Pull the data automatically, draft the commentary with AI, and let a human approve instead of assemble.",
     "3. Support triage. Incoming tickets can be categorized, summarized, and routed before a person ever opens them. Your team answers the hard ones; the workflow drafts the easy ones.",
-    "4. Content production handoffs. Brief approved, draft written, assets requested, post scheduled — each handoff is a place work stalls. Automating the handoffs alone often cuts production time in half.",
+    "4. Content production handoffs. Brief approved, draft written, assets requested, post scheduled. Each handoff is a place work stalls. Automating the handoffs alone often cuts production time in half.",
     "5. Invoicing and follow-up. Send, track, remind, reconcile. None of this needs a human until something goes wrong, and the workflow can tell you when it does.",
     "The pattern across all five: software does the moving, your team does the judging. If you want to know which of these would save your team the most hours, that's exactly what our free audit maps out.",
   ],
   "n8n-vs-make-vs-zapier": [
-    "Every week someone asks us which platform is best. Wrong question. The right question is which platform is best for this workflow, this team, and this budget — and the answer changes more often than the marketing suggests.",
+    "Every week someone asks us which platform is best. Wrong question. The right question is which platform is best for this workflow, this team, and this budget, and the answer changes more often than the marketing suggests.",
     "Zapier wins on speed and simplicity. The connector library is the biggest in the business, and a non-technical team can maintain Zaps without calling us. The trade-off is cost at volume: per-task pricing gets painful once a workflow runs thousands of times a month.",
     "Make wins on visual complexity at a fair price. Branching, iteration, and data transformation are genuinely pleasant to build, and the per-operation pricing is friendlier than Zapier's at mid volume. The trade-off is a steeper learning curve for the team that inherits it.",
     "n8n wins on control and economics at scale. Self-hosted, it runs unlimited workflows for the cost of a small server, keeps sensitive data on your infrastructure, and handles custom code natively. The trade-off: someone has to own the instance.",
-    "Our actual decision tree: low volume and a non-technical team, Zapier. Mid volume with complex branching, Make. High volume, sensitive data, or custom logic, n8n. And yes — we regularly recommend the cheapest option, because the audit is about your hours, not our invoice.",
+    "Our actual decision tree: low volume and a non-technical team, Zapier. Mid volume with complex branching, Make. High volume, sensitive data, or custom logic, n8n. And yes, we regularly recommend the cheapest option, because the audit is about your hours, not our invoice.",
   ],
 };
 
@@ -53,9 +53,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = await safeFetch<FullPost | null>(postBySlugQuery, localPost(slug), { slug });
-  if (!post) return { title: "Post not found — Venture Voice" };
+  if (!post) return { title: "Post not found | Venture Voice" };
   return {
-    title: `${post.title} — Venture Voice`,
+    title: `${post.title} | Venture Voice`,
     description: post.excerpt,
   };
 }
@@ -110,7 +110,7 @@ export default async function BlogPostPage({
               </h2>
               <p>
                 Book a free 30-minute automation audit. We&apos;ll map your most
-                automatable workflows — you keep the findings either way.
+                automatable workflows. You keep the findings either way.
               </p>
               <Link
                 href="/#contact"
