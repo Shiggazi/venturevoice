@@ -11,7 +11,7 @@ const links = [
   { href: "/#faq", label: "FAQ" },
 ];
 
-export default function Header() {
+export default function Header({ logoUrl }: { logoUrl?: string | null }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -32,7 +32,7 @@ export default function Header() {
         <Link href="/" className="group flex items-center" aria-label="Venture Voice home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo-white.png"
+            src={logoUrl || "/logo-white.png"}
             alt="Venture Voice"
             className="h-6 w-auto transition-transform duration-300 group-hover:scale-[1.03] md:h-7"
           />

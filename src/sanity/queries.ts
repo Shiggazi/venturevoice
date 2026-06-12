@@ -1,6 +1,7 @@
 import { groq } from "next-sanity";
 
 export const settingsQuery = groq`*[_type == "siteSettings"][0]{
+  "logoUrl": logo.asset->url,
   heroEyebrow, heroHeadline, heroSubheadline,
   primaryCtaLabel, secondaryCtaLabel,
   vimeoId, videoTitle, videoCaption,

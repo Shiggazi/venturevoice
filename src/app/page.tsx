@@ -49,7 +49,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <Header />
+      <Header logoUrl={s.logoUrl} />
       <main>
         <Hero settings={s} />
         <VideoSection settings={s} />
@@ -63,7 +63,7 @@ export default async function HomePage() {
         <NewsletterSection settings={s} />
         <ContactSection contactEmail={s.contactEmail} />
       </main>
-      <Footer contactEmail={s.contactEmail} />
+      <Footer contactEmail={s.contactEmail} logoUrl={s.logoUrl} />
     </>
   );
 }

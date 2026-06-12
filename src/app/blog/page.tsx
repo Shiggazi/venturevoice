@@ -28,7 +28,7 @@ export default async function BlogIndex() {
 
   return (
     <>
-      <Header />
+      <Header logoUrl={s.logoUrl} />
       <main>
         <section className="canvas-grid">
           <div className="mx-auto max-w-6xl px-5 py-16 md:py-20">
@@ -48,7 +48,7 @@ export default async function BlogIndex() {
           </div>
         </section>
       </main>
-      <Footer contactEmail={s.contactEmail} />
+      <Footer contactEmail={s.contactEmail} logoUrl={s.logoUrl} />
     </>
   );
 }

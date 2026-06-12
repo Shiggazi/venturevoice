@@ -41,6 +41,7 @@ export type PostPreview = {
 };
 
 export type SiteSettings = {
+  logoUrl?: string | null;
   heroEyebrow: string;
   heroHeadline: string;
   heroSubheadline: string;
