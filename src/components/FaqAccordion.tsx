@@ -17,10 +17,10 @@ export default function FaqAccordion({ faqs }: { faqs: Faq[] }) {
               type="button"
               onClick={() => setOpenId(open ? null : f._id)}
               aria-expanded={open}
-              className="flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-left text-[17px] font-semibold text-ink transition-colors hover:text-cobalt"
+              className="flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-left text-[17px] font-semibold text-ink transition-colors hover:text-primary"
             >
               {f.question}
-              <span className="faq-icon font-mono shrink-0 text-cobalt" aria-hidden>
+              <span className="faq-icon font-mono shrink-0 text-primary" aria-hidden>
                 +
               </span>
             </button>

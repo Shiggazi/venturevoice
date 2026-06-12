@@ -29,15 +29,13 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <Link href="/" className="group flex items-center gap-2.5" aria-label="Venture Voice home">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-cobalt transition-transform duration-300 group-hover:rotate-[-6deg]">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-              <path d="M2 3l4.5 10h3L14 3h-2.8L8 11.2 4.8 3H2z" fill="#fff" />
-            </svg>
-          </span>
-          <span className="font-display text-[17px] font-bold tracking-tight text-white">
-            Venture Voice
-          </span>
+        <Link href="/" className="group flex items-center" aria-label="Venture Voice home">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo-white.png"
+            alt="Venture Voice"
+            className="h-6 w-auto transition-transform duration-300 group-hover:scale-[1.03] md:h-7"
+          />
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex" aria-label="Main">
@@ -45,14 +43,14 @@ export default function Header() {
             <Link
               key={l.href}
               href={l.href}
-              className="relative text-sm text-slate-2 transition-colors hover:text-white after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-amber after:transition-all after:duration-300 hover:after:w-full"
+              className="relative text-sm text-slate-2 transition-colors hover:text-white after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
             </Link>
           ))}
           <Link
             href="/#contact"
-            className="btn rounded-lg bg-cobalt px-4 py-2 text-sm font-semibold text-white hover:bg-cobalt-deep"
+            className="btn rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-deep"
           >
             Book a free audit
           </Link>
@@ -85,7 +83,7 @@ export default function Header() {
           <Link
             href="/#contact"
             onClick={() => setOpen(false)}
-            className="mt-2 block rounded-lg bg-cobalt px-4 py-3 text-center text-sm font-semibold text-white"
+            className="mt-2 block rounded-lg bg-primary px-4 py-3 text-center text-sm font-semibold text-white"
           >
             Book a free audit
           </Link>

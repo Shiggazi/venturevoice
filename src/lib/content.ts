@@ -35,6 +35,9 @@ export type PostPreview = {
   slug: string;
   excerpt: string;
   publishedAt: string;
+  featuredImage?: string | null;
+  featuredAlt?: string;
+  tags?: string[];
 };
 
 export type SiteSettings = {
@@ -183,6 +186,7 @@ export const fallbackPosts: PostPreview[] = [
     excerpt:
       "Before you post the job listing, check whether the role is actually three repetitive workflows in a trench coat. These five come up in almost every audit we run.",
     publishedAt: "2026-05-12",
+    tags: ["Playbooks", "Agency Ops"],
   },
   {
     _id: "p-2",
@@ -191,6 +195,7 @@ export const fallbackPosts: PostPreview[] = [
     excerpt:
       "Each platform wins in a different situation. Here's the decision tree we use on real client projects, including when we recommend the cheapest option.",
     publishedAt: "2026-04-28",
+    tags: ["Tool Comparison", "n8n", "Zapier"],
   },
 ];
 

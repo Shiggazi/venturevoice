@@ -5,14 +5,8 @@ export default function Footer({ contactEmail }: { contactEmail: string }) {
     <footer className="border-t border-line-dark bg-ink">
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 px-5 py-12 md:flex-row md:items-center">
         <div>
-          <div className="flex items-center gap-2.5">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-cobalt">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                <path d="M2 3l4.5 10h3L14 3h-2.8L8 11.2 4.8 3H2z" fill="#fff" />
-              </svg>
-            </span>
-            <span className="font-display text-[17px] font-bold text-white">Venture Voice</span>
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-white.png" alt="Venture Voice" className="h-6 w-auto" />
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-2">
             AI-powered automation for agencies, enterprises, and operators who&apos;d
             rather build than babysit busywork.

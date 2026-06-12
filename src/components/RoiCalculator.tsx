@@ -26,7 +26,7 @@ export default function RoiCalculator() {
       <div className="mx-auto max-w-6xl px-5 py-20 md:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <p className="eyebrow text-amber">Try it yourself</p>
+            <p className="eyebrow text-accent">Try it yourself</p>
             <h2 className="font-display mt-3 text-3xl font-bold tracking-tight text-white md:text-4xl">
               What is manual work costing you?
             </h2>
@@ -42,7 +42,7 @@ export default function RoiCalculator() {
                   <label htmlFor="roi-hours" className="text-sm font-medium text-white">
                     Hours your team spends on repetitive tasks each week
                   </label>
-                  <span className="font-mono text-lg font-semibold text-amber">{hours}h</span>
+                  <span className="font-mono text-lg font-semibold text-accent">{hours}h</span>
                 </div>
                 <input
                   id="roi-hours"
@@ -61,7 +61,7 @@ export default function RoiCalculator() {
                   <label htmlFor="roi-rate" className="text-sm font-medium text-white">
                     Average hourly cost of that time (USD)
                   </label>
-                  <span className="font-mono text-lg font-semibold text-amber">${rate}</span>
+                  <span className="font-mono text-lg font-semibold text-accent">${rate}</span>
                 </div>
                 <input
                   id="roi-rate"
@@ -93,7 +93,7 @@ export default function RoiCalculator() {
                 </p>
               </div>
               <div>
-                <p className="font-display text-4xl font-bold text-mint tabular-nums md:text-[2.6rem]">
+                <p className="font-display text-4xl font-bold text-accent tabular-nums md:text-[2.6rem]">
                   {recovered.toLocaleString()}h
                 </p>
                 <p className="mt-1.5 text-sm text-slate-2">
@@ -115,7 +115,7 @@ export default function RoiCalculator() {
 
             <Link
               href="/#contact"
-              className="btn mt-7 block rounded-lg bg-cobalt px-6 py-3.5 text-center text-[15px] font-semibold text-white shadow-[0_8px_24px_rgba(46,91,255,0.35)] hover:bg-cobalt-deep"
+              className="btn mt-7 block rounded-lg bg-primary px-6 py-3.5 text-center text-[15px] font-semibold text-white shadow-[0_8px_24px_rgba(126,82,193,0.35)] hover:bg-primary-deep"
             >
               Find my recoverable hours
             </Link>

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { PortableText, type PortableTextBlock } from "next-sanity";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { TagPills } from "@/components/BlogCard";
 import { safeFetch } from "@/sanity/client";
 import { postBySlugQuery, settingsQuery } from "@/sanity/queries";
 import { fallbackPosts, fallbackSettings, type SiteSettings } from "@/lib/content";
@@ -17,6 +18,9 @@ type FullPost = {
   excerpt: string;
   publishedAt: string;
   body?: PortableTextBlock[];
+  featuredImage?: string | null;
+  featuredAlt?: string;
+  tags?: string[];
 };
 
 // Local bodies for the two seed posts, so the blog works before
@@ -82,22 +86,35 @@ export default async function BlogPostPage({
       <main>
         <section className="canvas-grid">
           <div className="mx-auto max-w-3xl px-5 py-16 md:py-20">
-            <Link href="/blog" className="font-mono text-xs text-amber hover:underline">
+            <Link href="/blog" className="font-mono text-xs text-accent hover:underline">
               ← All posts
             </Link>
             <h1 className="font-display mt-4 text-3xl font-bold leading-tight tracking-tight text-white md:text-[2.6rem]">
               {post.title}
             </h1>
-            <p className="font-mono mt-4 text-xs text-slate-2">
-              {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-4">
+              <p className="font-mono text-xs text-slate-2">
+                {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
+              <TagPills tags={post.tags} light />
+            </div>
           </div>
         </section>
         <article className="bg-white">
+          <div className="mx-auto max-w-3xl px-5">
+            {post.featuredImage && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={post.featuredImage}
+                alt={post.featuredAlt || post.title}
+                className="-mt-10 w-full rounded-2xl border border-line object-cover shadow-[0_24px_60px_rgba(20,14,36,0.18)]"
+              />
+            )}
+          </div>
           <div className="prose-vv mx-auto max-w-3xl px-5 py-14">
             {post.body ? (
               <PortableText value={post.body} />
@@ -114,7 +131,7 @@ export default async function BlogPostPage({
               </p>
               <Link
                 href="/#contact"
-                className="mt-2 inline-block rounded-lg bg-cobalt px-5 py-3 text-sm font-semibold text-white no-underline transition-colors hover:bg-cobalt-deep"
+                className="mt-2 inline-block rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white no-underline transition-colors hover:bg-primary-deep"
               >
                 Book a free audit
               </Link>

@@ -10,6 +10,7 @@ import { processSteps, problemItems } from "@/lib/content";
 import NewsletterForm from "./NewsletterForm";
 import Reveal from "./Reveal";
 import FaqAccordion from "./FaqAccordion";
+import BlogCard from "./BlogCard";
 
 /* ---------- shared bits ---------- */
 
@@ -26,7 +27,7 @@ function SectionHead({
 }) {
   return (
     <Reveal className="max-w-2xl">
-      <p className={`eyebrow ${light ? "text-amber" : "text-cobalt"}`}>{eyebrow}</p>
+      <p className={`eyebrow ${light ? "text-accent" : "text-primary"}`}>{eyebrow}</p>
       <h2
         className={`font-display mt-3 text-3xl font-bold tracking-tight md:text-4xl ${
           light ? "text-white" : "text-ink"
@@ -90,7 +91,7 @@ export function VideoSection({ settings }: { settings: SiteSettings }) {
             </Reveal>
           </div>
           <Reveal delay={100}>
-            <div className="overflow-hidden rounded-2xl border border-line bg-ink shadow-[0_24px_60px_rgba(11,18,32,0.18)]">
+            <div className="overflow-hidden rounded-2xl border border-line bg-ink shadow-[0_24px_60px_rgba(20,14,36,0.18)]">
               <div className="relative aspect-video">
                 <iframe
                   src={`https://player.vimeo.com/video/${settings.vimeoId}?dnt=1`}
@@ -122,7 +123,7 @@ export function ProblemSection() {
           {problemItems.map((p, i) => (
             <Reveal key={p.title} delay={i * 110}>
               <div className="lift h-full rounded-2xl border border-line bg-white p-7">
-                <p className="font-mono text-xs font-medium uppercase tracking-wider text-cobalt">
+                <p className="font-mono text-xs font-medium uppercase tracking-wider text-primary">
                   {p.stat}
                 </p>
                 <h3 className="font-display mt-3 text-xl font-semibold text-ink">{p.title}</h3>
@@ -149,17 +150,17 @@ export function ServicesSection({ services }: { services: Service[] }) {
           {services.map((s, i) => (
             <Reveal key={s._id} delay={i * 110} as="article" className="h-full">
               <div className="lift group flex h-full flex-col rounded-2xl border border-line bg-paper p-8">
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-ink text-amber transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-4deg]">
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-ink text-accent transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-4deg]">
                   {icons[s.icon] ?? icons.workflow}
                 </div>
                 <h3 className="font-display mt-5 text-[22px] font-bold text-ink">{s.title}</h3>
-                <p className="font-mono mt-1 text-[13px] text-cobalt">{s.tagline}</p>
+                <p className="font-mono mt-1 text-[13px] text-primary">{s.tagline}</p>
                 <p className="mt-4 leading-relaxed text-slate">{s.description}</p>
                 <ul className="mt-5 space-y-2.5 border-t border-line pt-5">
                   {s.bullets?.map((b) => (
                     <li key={b} className="flex gap-2.5 text-[15px] text-slate">
                       <svg className="mt-1 shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-                        <path d="M2 7.5l3 3 7-7" stroke="#2fd180" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M2 7.5l3 3 7-7" stroke="#3299d3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                       {b}
                     </li>
@@ -187,7 +188,7 @@ export function ProcessSection() {
           {processSteps.map((step, i) => (
             <Reveal key={step.n} delay={i * 110} as="li" className="h-full">
               <div className="lift relative h-full rounded-2xl border border-line bg-white p-7">
-                <p className="font-mono text-sm font-semibold text-cobalt">{step.n}</p>
+                <p className="font-mono text-sm font-semibold text-primary">{step.n}</p>
                 <h3 className="font-display mt-3 text-xl font-semibold text-ink">{step.title}</h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-slate">{step.body}</p>
                 {i < processSteps.length - 1 && (
@@ -225,7 +226,7 @@ export function TestimonialsSection({ testimonials }: { testimonials: Testimonia
             <Reveal key={t._id} delay={i * 110} as="figure" className="h-full">
               <div className="lift flex h-full flex-col rounded-2xl border border-line bg-paper p-8">
                 {t.result && (
-                  <p className="font-mono mb-4 inline-flex w-fit rounded-full bg-ink px-3.5 py-1.5 text-xs text-amber">
+                  <p className="font-mono mb-4 inline-flex w-fit rounded-full bg-ink px-3.5 py-1.5 text-xs text-accent">
                     {t.result}
                   </p>
                 )}
@@ -257,7 +258,7 @@ export function BlogTeaser({ posts }: { posts: PostPreview[] }) {
             sub="Practical breakdowns of real workflows, managed entirely from the CMS."
           />
           <Reveal delay={120}>
-            <Link href="/blog" className="arrow-link text-sm font-semibold text-cobalt hover:text-cobalt-deep">
+            <Link href="/blog" className="arrow-link text-sm font-semibold text-primary hover:text-primary-deep">
               All posts <span className="arr">→</span>
             </Link>
           </Reveal>
@@ -265,22 +266,7 @@ export function BlogTeaser({ posts }: { posts: PostPreview[] }) {
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {posts.slice(0, 2).map((p, i) => (
             <Reveal key={p._id} delay={i * 110} className="h-full">
-              <Link
-                href={`/blog/${p.slug}`}
-                className="lift group block h-full rounded-2xl border border-line bg-white p-8"
-              >
-                <p className="font-mono text-xs text-slate-2">
-                  {new Date(p.publishedAt).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </p>
-                <h3 className="font-display mt-3 text-xl font-bold text-ink transition-colors group-hover:text-cobalt">
-                  {p.title}
-                </h3>
-                <p className="mt-3 leading-relaxed text-slate">{p.excerpt}</p>
-              </Link>
+              <BlogCard post={p} />
             </Reveal>
           ))}
         </div>

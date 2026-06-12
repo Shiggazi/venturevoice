@@ -20,9 +20,15 @@ export const faqsQuery = groq`*[_type == "faq"] | order(order asc){
 }`;
 
 export const postPreviewsQuery = groq`*[_type == "post" && defined(slug.current)] | order(publishedAt desc){
-  _id, title, "slug": slug.current, excerpt, publishedAt
+  _id, title, "slug": slug.current, excerpt, publishedAt,
+  "featuredImage": featuredImage.asset->url,
+  "featuredAlt": coalesce(featuredImage.alt, title),
+  tags
 }`;
 
 export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]{
-  _id, title, "slug": slug.current, excerpt, publishedAt, body
+  _id, title, "slug": slug.current, excerpt, publishedAt, body,
+  "featuredImage": featuredImage.asset->url,
+  "featuredAlt": coalesce(featuredImage.alt, title),
+  tags
 }`;
