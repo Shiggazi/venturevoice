@@ -63,7 +63,7 @@ export default async function HomePage() {
         <NewsletterSection settings={s} />
         <ContactSection contactEmail={s.contactEmail} />
       </main>
-      <Footer contactEmail={s.contactEmail} logoUrl={s.logoUrl} />
+      <Footer contactEmail={s.contactEmail} />
     </>
   );
 }

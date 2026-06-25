@@ -24,15 +24,15 @@ export default function Header({ logoUrl }: { logoUrl?: string | null }) {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b bg-ink/85 backdrop-blur-md transition-shadow duration-300 ${
-        scrolled ? "border-line-dark shadow-[0_8px_30px_rgba(0,0,0,0.35)]" : "border-transparent"
+      className={`sticky top-0 z-50 border-b bg-white/90 backdrop-blur-md transition-shadow duration-300 ${
+        scrolled ? "border-line shadow-[0_4px_24px_rgba(20,14,36,0.08)]" : "border-line/60"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <Link href="/" className="group flex items-center" aria-label="Venture Voice home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={logoUrl || "/logo-white.png"}
+            src={logoUrl || "/logo.png"}
             alt="Venture Voice"
             className="h-6 w-auto transition-transform duration-300 group-hover:scale-[1.03] md:h-7"
           />
@@ -43,7 +43,7 @@ export default function Header({ logoUrl }: { logoUrl?: string | null }) {
             <Link
               key={l.href}
               href={l.href}
-              className="relative text-sm text-slate-2 transition-colors hover:text-white after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
+              className="relative text-sm text-slate transition-colors hover:text-ink after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
             </Link>
@@ -57,7 +57,7 @@ export default function Header({ logoUrl }: { logoUrl?: string | null }) {
         </nav>
 
         <button
-          className="grid h-10 w-10 place-items-center rounded-lg text-white md:hidden"
+          className="grid h-10 w-10 place-items-center rounded-lg text-ink md:hidden"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
           aria-label="Toggle menu"
@@ -69,13 +69,13 @@ export default function Header({ logoUrl }: { logoUrl?: string | null }) {
       </div>
 
       {open && (
-        <nav className="border-t border-line-dark bg-ink px-5 pb-5 pt-2 md:hidden" aria-label="Mobile">
+        <nav className="border-t border-line bg-white px-5 pb-5 pt-2 md:hidden" aria-label="Mobile">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block py-3 text-[15px] text-slate-2 hover:text-white"
+              className="block py-3 text-[15px] text-slate hover:text-ink"
             >
               {l.label}
             </Link>

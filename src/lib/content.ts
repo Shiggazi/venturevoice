@@ -139,6 +139,14 @@ export const fallbackTestimonials: Testimonial[] = [
     result: "Support triage automated end to end",
     order: 2,
   },
+  {
+    _id: "t-3",
+    quote: "Test third review to verify carousel activation.",
+    name: "Test",
+    role: "QA",
+    result: "carousel check",
+    order: 3,
+  },
 ];
 
 export const fallbackFaqs: Faq[] = [

@@ -11,6 +11,7 @@ import NewsletterForm from "./NewsletterForm";
 import Reveal from "./Reveal";
 import FaqAccordion from "./FaqAccordion";
 import BlogCard from "./BlogCard";
+import TestimonialsCarousel from "./TestimonialsCarousel";
 
 /* ---------- shared bits ---------- */
 
@@ -221,27 +222,9 @@ export function TestimonialsSection({ testimonials }: { testimonials: Testimonia
           title="What clients got back"
           sub="Real engagements, in the client's own words."
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {testimonials.map((t, i) => (
-            <Reveal key={t._id} delay={i * 110} as="figure" className="h-full">
-              <div className="lift flex h-full flex-col rounded-2xl border border-line bg-paper p-8">
-                {t.result && (
-                  <p className="font-mono mb-4 inline-flex w-fit rounded-full bg-ink px-3.5 py-1.5 text-xs text-accent">
-                    {t.result}
-                  </p>
-                )}
-                <blockquote className="text-[17px] leading-relaxed text-ink">
-                  &ldquo;{t.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-auto border-t border-line pt-4 text-sm">
-                  <span className="mt-6 block" />
-                  <span className="font-semibold text-ink">{t.name}</span>
-                  <span className="text-slate"> · {t.role}</span>
-                </figcaption>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal className="mt-12">
+          <TestimonialsCarousel testimonials={testimonials} />
+        </Reveal>
       </div>
     </section>
   );

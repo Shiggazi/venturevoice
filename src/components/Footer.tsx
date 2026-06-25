@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-export default function Footer({ contactEmail, logoUrl }: { contactEmail: string; logoUrl?: string | null }) {
+export default function Footer({ contactEmail }: { contactEmail: string }) {
   return (
     <footer className="border-t border-line-dark bg-ink">
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 px-5 py-12 md:flex-row md:items-center">
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logoUrl || "/logo-white.png"} alt="Venture Voice" className="h-6 w-auto" />
+          <img src="/logo-white.png" alt="Venture Voice" className="h-6 w-auto" />
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-2">
             AI-powered automation for agencies, enterprises, and operators who&apos;d
             rather build than babysit busywork.

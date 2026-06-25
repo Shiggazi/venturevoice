@@ -48,7 +48,7 @@ export default async function BlogIndex() {
           </div>
         </section>
       </main>
-      <Footer contactEmail={s.contactEmail} logoUrl={s.logoUrl} />
+      <Footer contactEmail={s.contactEmail} />
     </>
   );
 }

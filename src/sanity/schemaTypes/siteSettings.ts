@@ -10,7 +10,7 @@ export const siteSettings = defineType({
       title: "Logo",
       type: "image",
       description:
-        "Shown in the site header and footer. Upload a transparent PNG or SVG that reads well on dark backgrounds (a white or light version of the wordmark). If empty, the built-in logo is used.",
+        "Shown in the site header and footer. Upload a transparent PNG or SVG of your full-color or dark wordmark (the header background is white). If empty, the built-in logo is used.",
     }),
     defineField({ name: "heroEyebrow", title: "Hero eyebrow (small label above headline)", type: "string" }),
     defineField({ name: "heroHeadline", title: "Hero headline", type: "string", validation: (r) => r.required() }),

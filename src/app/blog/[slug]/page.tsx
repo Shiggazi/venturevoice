@@ -139,7 +139,7 @@ export default async function BlogPostPage({
           </div>
         </article>
       </main>
-      <Footer contactEmail={s.contactEmail} logoUrl={s.logoUrl} />
+      <Footer contactEmail={s.contactEmail} />
     </>
   );
 }
