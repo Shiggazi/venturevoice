@@ -44,7 +44,13 @@ export default async function BlogIndex() {
         </section>
         <section className="bg-paper">
           <div className="mx-auto max-w-6xl px-5 py-16">
-            <BlogList posts={posts} />
+            {posts.length > 0 ? (
+              <BlogList posts={posts} />
+            ) : (
+              <p className="rounded-2xl border border-line bg-white p-12 text-center text-slate">
+                Posts coming soon — check back shortly.
+              </p>
+            )}
           </div>
         </section>
       </main>

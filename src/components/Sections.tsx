@@ -231,6 +231,7 @@ export function TestimonialsSection({ testimonials }: { testimonials: Testimonia
 }
 
 export function BlogTeaser({ posts }: { posts: PostPreview[] }) {
+  if (posts.length === 0) return null;
   return (
     <section className="border-b border-line bg-paper">
       <div className="mx-auto max-w-6xl px-5 py-20 md:py-24">
