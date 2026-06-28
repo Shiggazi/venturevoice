@@ -145,7 +145,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
             <p className="mt-1 text-xs text-slate-2 md:text-sm">client ownership, zero lock-in</p>
           </div>
           <div>
-            <p className="font-mono text-2xl font-bold text-accent md:text-3xl">n8n · Make · Zapier</p>
+            <p className="font-mono text-2xl font-bold text-accent md:text-3xl">n8n · Claude Code</p>
             <p className="mt-1 text-xs text-slate-2 md:text-sm">plus OpenAI and Anthropic models</p>
           </div>
         </div>
