@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { safeFetch } from "@/sanity/client";
+import { settingsQuery } from "@/sanity/queries";
+import { fallbackSettings, type SiteSettings } from "@/lib/content";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,11 +24,12 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const gaId = process.env.NEXT_PUBLIC_GA_ID;
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const settings = await safeFetch<SiteSettings>(settingsQuery, fallbackSettings);
+  const gaId = settings.gaId || process.env.NEXT_PUBLIC_GA_ID;
+
   return (
     <html lang="en">
       <head>

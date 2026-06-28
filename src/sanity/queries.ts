@@ -5,7 +5,8 @@ export const settingsQuery = groq`*[_type == "siteSettings"][0]{
   heroEyebrow, heroHeadline, heroSubheadline,
   primaryCtaLabel, secondaryCtaLabel,
   vimeoId, videoTitle, videoCaption,
-  contactEmail, newsletterHeadline, newsletterSub
+  contactEmail, newsletterHeadline, newsletterSub,
+  gaId, formspreeId
 }`;
 
 export const servicesQuery = groq`*[_type == "service"] | order(order asc){

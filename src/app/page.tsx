@@ -61,7 +61,7 @@ export default async function HomePage() {
         <BlogTeaser posts={posts} />
         <FaqSection faqs={faqs} />
         <NewsletterSection settings={s} />
-        <ContactSection contactEmail={s.contactEmail} />
+        <ContactSection contactEmail={s.contactEmail} formspreeId={s.formspreeId} />
       </main>
       <Footer contactEmail={s.contactEmail} />
     </>

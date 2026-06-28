@@ -2,9 +2,14 @@
 
 import { useState } from "react";
 
-const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "xlgyndvk";
-
-export default function ContactSection({ contactEmail }: { contactEmail: string }) {
+export default function ContactSection({
+  contactEmail,
+  formspreeId,
+}: {
+  contactEmail: string;
+  formspreeId?: string;
+}) {
+  const FORMSPREE_ID = formspreeId || process.env.NEXT_PUBLIC_FORMSPREE_ID || "xlgyndvk";
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>

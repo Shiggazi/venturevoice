@@ -53,6 +53,8 @@ export type SiteSettings = {
   contactEmail: string;
   newsletterHeadline: string;
   newsletterSub: string;
+  gaId?: string;
+  formspreeId?: string;
 };
 
 export const fallbackSettings: SiteSettings = {

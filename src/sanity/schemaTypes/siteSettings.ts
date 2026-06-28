@@ -28,6 +28,18 @@ export const siteSettings = defineType({
     defineField({ name: "contactEmail", title: "Contact email", type: "string" }),
     defineField({ name: "newsletterHeadline", title: "Newsletter headline", type: "string" }),
     defineField({ name: "newsletterSub", title: "Newsletter subtext", type: "text", rows: 2 }),
+    defineField({
+      name: "gaId",
+      title: "Google Analytics Measurement ID",
+      type: "string",
+      description: "Your GA4 tracking ID, e.g. G-XXXXXXXXXX. Leave blank to disable analytics.",
+    }),
+    defineField({
+      name: "formspreeId",
+      title: "Formspree Form ID",
+      type: "string",
+      description: "The ID from your Formspree endpoint URL, e.g. xlgyndvk from formspree.io/f/xlgyndvk",
+    }),
   ],
   preview: { prepare: () => ({ title: "Site Settings" }) },
 });
