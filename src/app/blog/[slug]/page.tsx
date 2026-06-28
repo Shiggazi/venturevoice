@@ -37,10 +37,10 @@ const fallbackBodies: Record<string, string[]> = {
   ],
   "n8n-vs-make-vs-zapier": [
     "Every week someone asks us which platform is best. Wrong question. The right question is which platform is best for this workflow, this team, and this budget, and the answer changes more often than the marketing suggests.",
-    "Zapier wins on speed and simplicity. The connector library is the biggest in the business, and a non-technical team can maintain Zaps without calling us. The trade-off is cost at volume: per-task pricing gets painful once a workflow runs thousands of times a month.",
-    "Make wins on visual complexity at a fair price. Branching, iteration, and data transformation are genuinely pleasant to build, and the per-operation pricing is friendlier than Zapier's at mid volume. The trade-off is a steeper learning curve for the team that inherits it.",
-    "n8n wins on control and economics at scale. Self-hosted, it runs unlimited workflows for the cost of a small server, keeps sensitive data on your infrastructure, and handles custom code natively. The trade-off: someone has to own the instance.",
-    "Our actual decision tree: low volume and a non-technical team, Zapier. Mid volume with complex branching, Make. High volume, sensitive data, or custom logic, n8n. And yes, we regularly recommend the cheapest option, because the audit is about your hours, not our invoice.",
+    "n8n wins on control and economics at scale. Self-hosted, it runs unlimited workflows for the cost of a small server, keeps sensitive data on your infrastructure, and handles custom code natively. It's our default choice for clients who want to own their stack long-term.",
+    "Claude Code wins on intelligence. Where n8n moves data between systems, Claude Code reasons about it — drafting, summarising, classifying, and making judgement calls that rule-based automation simply cannot. The two together cover the full range: structured routing in n8n, AI decision-making via Claude Code.",
+    "Our actual decision tree: if the task is mechanical and repeatable, n8n handles it. If it requires reading context, generating output, or making a nuanced call, Claude Code steps in. Most of our builds use both in the same workflow.",
+    "And yes, we regularly recommend the combination that saves the most hours, not the one that looks most impressive on a slide. That's exactly what the free audit figures out.",
   ],
 };
 

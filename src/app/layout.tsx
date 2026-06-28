@@ -8,11 +8,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Venture Voice | AI & Automation for Agencies and Ops Teams",
   description:
-    "Venture Voice designs and builds AI-powered automations on n8n, Make, and Zapier, so your team stops losing hours to repetitive work. Book a free automation audit.",
+    "Venture Voice designs and builds AI-powered automations on n8n and Claude Code, so your team stops losing hours to repetitive work. Book a free automation audit.",
   openGraph: {
     title: "Venture Voice | AI & Automation for Agencies and Ops Teams",
     description:
-      "We design and build AI-powered automations on n8n, Make, and Zapier. Book a free automation audit.",
+      "We design and build AI-powered automations on n8n and Claude Code. Book a free automation audit.",
     url: "https://venturevoice.ai",
     siteName: "Venture Voice",
     type: "website",

@@ -16,7 +16,7 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Blog | Venture Voice",
   description:
-    "Practical breakdowns of real automation workflows on n8n, Make, and Zapier. No hype.",
+    "Practical breakdowns of real automation workflows on n8n and Claude Code. No hype.",
 };
 
 export default async function BlogIndex() {

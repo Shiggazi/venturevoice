@@ -61,7 +61,7 @@ export const fallbackSettings: SiteSettings = {
   heroEyebrow: "AI & Automation Consultancy",
   heroHeadline: "The work still gets done. Just not by hand.",
   heroSubheadline:
-    "Venture Voice designs and builds AI-powered automations on n8n, Make, and Zapier, so your agency or operations team stops losing hours every week to work software should be doing.",
+    "Venture Voice designs and builds AI-powered automations on n8n and Claude Code, so your agency or operations team stops losing hours every week to work software should be doing.",
   primaryCtaLabel: "Book a free automation audit",
   secondaryCtaLabel: "Watch how it works",
   vimeoId: "1161430461",
@@ -80,7 +80,7 @@ export const fallbackServices: Service[] = [
     title: "Automation Builds",
     tagline: "We build it. You run it.",
     description:
-      "We connect the tools you already use, from your CRM and inbox to spreadsheets, Slack, and invoicing, into workflows that run on their own. Built on n8n, Make, and Zapier, documented and handed over so your team owns every piece.",
+      "We connect the tools you already use, from your CRM and inbox to spreadsheets, Slack, and invoicing, into workflows that run on their own. Built on n8n and Claude Code, documented and handed over so your team owns every piece.",
     bullets: [
       "Lead intake, enrichment, and routing",
       "Client onboarding and reporting handoffs",
@@ -156,7 +156,7 @@ export const fallbackFaqs: Faq[] = [
     _id: "f-1",
     question: "Which tools and platforms do you work with?",
     answer:
-      "We build primarily on n8n, Make, and Zapier, and integrate them with whatever you already run: CRMs like HubSpot and Pipedrive, Google Workspace, Notion, Airtable, Slack, email platforms, and AI models from OpenAI and Anthropic. If your stack has an API, we can almost certainly connect it.",
+      "We build primarily on n8n and Claude Code, and integrate them with whatever you already run: CRMs like HubSpot and Pipedrive, Google Workspace, Notion, Airtable, Slack, and email platforms. If your stack has an API, we can almost certainly connect it.",
     order: 1,
   },
   {
