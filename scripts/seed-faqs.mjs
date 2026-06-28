@@ -34,7 +34,7 @@ const faqs = [
     _type: "faq",
     question: "Which tools and platforms do you work with?",
     answer:
-      "We build primarily on n8n, Make, and Zapier, and integrate them with whatever you already run: CRMs like HubSpot and Pipedrive, Google Workspace, Notion, Airtable, Slack, email platforms, and AI models from OpenAI and Anthropic. If your stack has an API, we can almost certainly connect it.",
+      "We build primarily on n8n and Claude Code, and integrate them with whatever you already run: CRMs like HubSpot and Pipedrive, Google Workspace, Notion, Airtable, Slack, and email platforms. If your stack has an API, we can almost certainly connect it.",
     order: 1,
   },
   {
