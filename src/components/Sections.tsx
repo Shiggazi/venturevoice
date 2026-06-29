@@ -286,7 +286,7 @@ export function NewsletterSection({ settings }: { settings: SiteSettings }) {
               <h2 className="font-display text-2xl font-bold text-ink">{settings.newsletterHeadline}</h2>
               <p className="mt-2 leading-relaxed text-slate">{settings.newsletterSub}</p>
             </div>
-            <NewsletterForm contactEmail={settings.contactEmail} />
+            <NewsletterForm />
           </div>
         </Reveal>
       </div>
