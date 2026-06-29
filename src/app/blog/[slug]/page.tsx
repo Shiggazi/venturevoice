@@ -35,7 +35,7 @@ const fallbackBodies: Record<string, string[]> = {
     "5. Invoicing and follow-up. Send, track, remind, reconcile. None of this needs a human until something goes wrong, and the workflow can tell you when it does.",
     "The pattern across all five: software does the moving, your team does the judging. If you want to know which of these would save your team the most hours, that's exactly what our free audit maps out.",
   ],
-  "n8n-vs-make-vs-zapier": [
+  "n8n-and-claude-code": [
     "Every week someone asks us which platform is best. Wrong question. The right question is which platform is best for this workflow, this team, and this budget, and the answer changes more often than the marketing suggests.",
     "n8n wins on control and economics at scale. Self-hosted, it runs unlimited workflows for the cost of a small server, keeps sensitive data on your infrastructure, and handles custom code natively. It's our default choice for clients who want to own their stack long-term.",
     "Claude Code wins on intelligence. Where n8n moves data between systems, Claude Code reasons about it — drafting, summarising, classifying, and making judgement calls that rule-based automation simply cannot. The two together cover the full range: structured routing in n8n, AI decision-making via Claude Code.",
